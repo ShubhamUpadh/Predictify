@@ -11,7 +11,7 @@ public class userOpinionModel {
     long id;
 
     @OneToMany
-    userModel userModel;
+    User user;
 
     @OneToMany
     opinionModel opinionModel;
@@ -21,8 +21,8 @@ public class userOpinionModel {
     public userOpinionModel() {
     }
 
-    public userOpinionModel(userModel userModel, opinionModel opinionModel, opinion opinion) {
-        this.userModel = userModel;
+    public userOpinionModel(User user, opinionModel opinionModel, opinion opinion) {
+        this.user = user;
         this.opinionModel = opinionModel;
         this.opinion = opinion;
     }
@@ -35,12 +35,12 @@ public class userOpinionModel {
         this.id = id;
     }
 
-    public com.Predictify.www.Model.userModel getUserModel() {
-        return userModel;
+    public User getUserModel() {
+        return user;
     }
 
-    public void setUserModel(com.Predictify.www.Model.userModel userModel) {
-        this.userModel = userModel;
+    public void setUserModel(User user) {
+        this.user = user;
     }
 
     public com.Predictify.www.Model.opinionModel getOpinionModel() {

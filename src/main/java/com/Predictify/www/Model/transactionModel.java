@@ -11,7 +11,7 @@ public class transactionModel {
     long id;
 
     @ManyToOne
-    userModel user;
+    User user;
 
     operation operation;
     Double amount;
@@ -19,7 +19,7 @@ public class transactionModel {
     public transactionModel() {
     }
 
-    public transactionModel(double amount, userModel user) {
+    public transactionModel(double amount, User user) {
         this.amount = amount;
         this.user = user;
     }
@@ -32,11 +32,11 @@ public class transactionModel {
         this.id = id;
     }
 
-    public userModel getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(userModel user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
