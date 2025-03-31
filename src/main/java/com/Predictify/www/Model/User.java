@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "User")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,7 +15,7 @@ public class User {
     String password;
     userStatus status; // can be active, inactive, blocked
 
-    @OneToOne(mappedBy = "User", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     Wallet wallet;
 
 
@@ -78,7 +78,7 @@ public class User {
     }
 
     @Override
-    public int hashcode(){
+    public int hashCode(){
         return Objects.hash(id);
     }
 

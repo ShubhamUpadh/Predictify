@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Wallet")
+@Table(name = "wallet")
 public class Wallet {
     @Id
     @Column(name = "user_id")
@@ -18,7 +18,10 @@ public class Wallet {
     private User user;
     int balance = 0; // this is in paise
 
-    public Wallet(Long id, User user, int balance) {
+    @Version
+    Integer version;
+
+    public Wallet(User user, int balance) {
         this.id = user.getId();
         this.user = user;
         this.balance = balance;
@@ -27,7 +30,7 @@ public class Wallet {
     public Wallet() {
     }
 
-    public Wallet(Double balance) {
+    public Wallet(int balance) {
         this.balance = balance;
     }
 
@@ -59,17 +62,24 @@ public class Wallet {
         this.id = id;
     }
 
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
 
     @Override
     public boolean equals(Object o){
-        if (this == 0) return true;
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Wallet wallet1 = (Wallet)o;
         return Objects.equals(id, user.id);
     }
 
     @Override
-    public int hashcode(){
+    public int hashCode(){
         return Objects.hash(id);
     }
 }
