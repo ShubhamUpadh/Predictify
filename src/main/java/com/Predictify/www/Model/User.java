@@ -13,7 +13,8 @@ public class User {
     Long id;
     String username;
     String password;
-    userStatus status; // can be active, inactive, blocked
+    @Enumerated(EnumType.STRING)
+    userStatus status = userStatus.ACTIVE; // can be active, inactive, blocked
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     Wallet wallet;
