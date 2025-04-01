@@ -1,6 +1,7 @@
 package com.Predictify.www.Model;
 
 import com.Predictify.www.Enum.userStatus;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -15,10 +16,6 @@ public class User {
     String password;
     @Enumerated(EnumType.STRING)
     userStatus status = userStatus.ACTIVE; // can be active, inactive, blocked
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    Wallet wallet;
-
 
     public User(String password, String username) {
         this.password = password;
@@ -59,15 +56,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Wallet getWalletModel() {
-        return wallet;
-    }
-
-    public void setWalletModel(Wallet wallet) {
-        this.wallet = wallet;
-        wallet.setUser(this);
     }
 
     @Override
