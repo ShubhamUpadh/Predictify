@@ -12,9 +12,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/polls")
 public class PollController {
+
     @Autowired
     PollService pollService;
-    @PostMapping("/create")
+
+    @PostMapping("/add")
     public ResponseEntity<OpinionPoll> createPoll(@Valid @RequestBody OpinionPoll poll) {
         OpinionPoll createdPoll = pollService.createPoll(poll);
         return ResponseEntity.ok(createdPoll);
@@ -26,6 +28,12 @@ public class PollController {
         return ResponseEntity.ok(activePolls);
     }
 
+    @GetMapping
+    public ResponseEntity<List<OpinionPoll>> getAllPolls() {
+        List<OpinionPoll> allPolls = pollService.getAllPolls();
+        return ResponseEntity.ok(allPolls);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<OpinionPoll> getPollById(@PathVariable Long id) {
         OpinionPoll poll = pollService.getPollById(id);
@@ -33,7 +41,6 @@ public class PollController {
     }
 }
 
-}
 
 
 //create a poll

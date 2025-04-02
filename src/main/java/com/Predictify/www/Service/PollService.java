@@ -3,10 +3,12 @@ package com.Predictify.www.Service;
 import com.Predictify.www.Model.OpinionPoll;
 import com.Predictify.www.Repository.PollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Service
 public class PollService {
     @Autowired
     PollRepository pollRepository;
@@ -26,5 +28,9 @@ public class PollService {
     public OpinionPoll getPollById(Long id) {
         return pollRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Poll not found with ID: " + id));
+    }
+
+    public List<OpinionPoll> getAllPolls() {
+        return pollRepository.findAll();
     }
 }
