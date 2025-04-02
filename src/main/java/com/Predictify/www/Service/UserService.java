@@ -30,7 +30,7 @@ public class UserService {
     public User addUser(User user) {
         User savedUser = userRepository.save(user);
 
-        Wallet wallet = new Wallet(savedUser, 0);
+        Wallet wallet = new Wallet(savedUser.getId(), 0);
         walletRepository.saveAndFlush(wallet);
         return savedUser;
     }
@@ -39,7 +39,7 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-//    @Transactional
+    @Transactional
     public List<User> addUsers(List<User> users) {
         List<User> savedUsers = new ArrayList<>();
         for (User user : users) {
@@ -47,7 +47,7 @@ public class UserService {
         }
 
         for (User savedUser : savedUsers){
-            Wallet wallet = new Wallet(savedUser, 0);
+            Wallet wallet = new Wallet(savedUser.getId(), 0);
             walletRepository.save(wallet);
         }
         return  savedUsers;

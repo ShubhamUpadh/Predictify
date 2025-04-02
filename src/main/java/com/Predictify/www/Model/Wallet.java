@@ -18,8 +18,8 @@ public class Wallet {
 //    @Version
 //    Integer version;
 
-    public Wallet(User user, int balance) {
-        this.id = user.getId();
+    public Wallet(Long id, int balance) {
+        this.id = id;
         this.balance = balance;
     }
 
@@ -69,5 +69,10 @@ public class Wallet {
     @Override
     public int hashCode(){
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "ID = "  + (this.id) + " Balance = " + (this.balance);
     }
 }

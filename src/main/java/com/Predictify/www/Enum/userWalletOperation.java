@@ -1,6 +1,6 @@
 package com.Predictify.www.Enum;
 
-public enum operation {
+public enum userWalletOperation {
     DEPOSIT,
     WITHDRAW,
     STAKE,

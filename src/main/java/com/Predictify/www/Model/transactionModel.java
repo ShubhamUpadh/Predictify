@@ -1,6 +1,6 @@
 //package com.Predictify.www.Model;
 //
-//import com.Predictify.www.Enum.operation;
+//import com.Predictify.www.Enum.userWalletOperation;
 //import jakarta.persistence.*;
 //
 //@Entity
@@ -13,7 +13,7 @@
 //    @ManyToOne
 //    User user;
 //
-//    operation operation;
+//    userWalletOperation userWalletOperation;
 //    Double amount;
 //
 //    public transactionModel() {
@@ -40,12 +40,12 @@
 //        this.user = user;
 //    }
 //
-//    public com.Predictify.www.Enum.operation getOperation() {
-//        return operation;
+//    public com.Predictify.www.Enum.userWalletOperation getOperation() {
+//        return userWalletOperation;
 //    }
 //
-//    public void setOperation(com.Predictify.www.Enum.operation operation) {
-//        this.operation = operation;
+//    public void setOperation(com.Predictify.www.Enum.userWalletOperation userWalletOperation) {
+//        this.userWalletOperation = userWalletOperation;
 //    }
 //
 //    public double getAmount() {
