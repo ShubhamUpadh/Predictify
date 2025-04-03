@@ -1,46 +1,52 @@
 package com.Predictify.www.Model;
 
-import jakarta.persistence.*;
 import com.Predictify.www.Enum.userWalletOperation;
+import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
-@Table(name="user_transactions")
-public class UserTransaction {
+public class PlatformTransaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "wallet_id", nullable = false)
-    private Long walletId;  // Storing only wallet ID instead of Wallet object
+    private Long walletId;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    userWalletOperation operation; // Enum: DEPOSIT, WITHDRAW, BET
+    PTType operation;
 
     @Column(nullable = false)
     private Double amount;
 
     @Column(name = "poll_id", nullable = true)
-    private Long pollId; // Storing only the ID instead of the full OpinionPoll object
+    private Long pollId;
 
     private LocalDateTime timestamp;
 
-    public UserTransaction() {
+    public PlatformTransaction() {
     }
 
-    public UserTransaction(Long pollId, Double amount, userWalletOperation operation, Long walletId){
+    public PlatformTransaction(Long pollId, Double amount, userWalletOperation operation, Long walletId){
         this.pollId = pollId;
         this.amount = amount;
-        this.operation = operation;
+        this.operation = PTConverter(operation);
         this.walletId = walletId;
         this.timestamp = LocalDateTime.now();
     }
 
+    enum PTType{ USERBET, PRIZE}
+
+    private PTType PTConverter(userWalletOperation operation){
+        if (operation == userWalletOperation.BET) return PTType.USERBET;
+        else return PTType.PRIZE;
+    }
+
+    public
     public Long getId() {
         return id;
     }
@@ -57,11 +63,11 @@ public class UserTransaction {
         this.walletId = walletId;
     }
 
-    public userWalletOperation getOperation() {
+    public PTType getOperation() {
         return operation;
     }
 
-    public void setOperation(userWalletOperation operation) {
+    public void setOperation(PTType operation) {
         this.operation = operation;
     }
 
