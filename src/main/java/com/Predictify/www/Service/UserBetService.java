@@ -2,6 +2,7 @@ package com.Predictify.www.Service;
 
 
 import com.Predictify.www.Model.UserBetDTO;
+import com.Predictify.www.Repository.PollRepository;
 import com.Predictify.www.Repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,8 +14,9 @@ import java.util.Collections;
 @Service
 public class UserBetService {
     @Autowired
-
     WalletRepository walletRepository;
+    PollRepository pollRepository;
+
     public UserBetService(){
 
     }
@@ -31,10 +33,16 @@ public class UserBetService {
         }
         // poll should be active
 
+        if ()
+
     }
 
     public boolean hasSufficientBalance(Long walletId, int betAmount){
         Integer balance = walletRepository.findBalanceByWalletId(walletId);
         return balance == null || balance >= betAmount;
+    }
+
+    public boolean isPollActive(Long pollId){
+        return pollRepository.isPollActive(Long pollId);
     }
 }
