@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 
 @Service
@@ -29,11 +30,14 @@ public class UserBetService {
         //amount should be present
         if (!hasSufficientBalance(userBetDTO.getId(), userBetDTO.getAmount())){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(Collections.singletonMap("message","Poll is inactive"));
+                    .body(Collections.singletonMap("message","Balance insufficient "));
         }
         // poll should be active
 
-        if ()
+        if (!isPollActive(userBetDTO.getPoll_id())){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Collections.singletonMap("message", "InactivePoll"));
+        }
 
     }
 
@@ -43,6 +47,6 @@ public class UserBetService {
     }
 
     public boolean isPollActive(Long pollId){
-        return pollRepository.isPollActive(Long pollId);
+        return pollRepository.isPollActive(pollId) || (pollRepository.expiryTime(pollId).isBefore(LocalDateTime.now()));
     }
 }
