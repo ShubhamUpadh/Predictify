@@ -16,7 +16,7 @@ public class UserTransaction {
     private Long id;
 
     @Column(name = "wallet_id", nullable = false)
-    private Long walletId;  // Storing only wallet ID instead of Wallet object
+    private Long walletId;  // Storing only wallet ID instead of UserWallet object
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

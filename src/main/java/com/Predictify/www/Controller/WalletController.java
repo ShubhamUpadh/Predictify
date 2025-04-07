@@ -1,8 +1,8 @@
 package com.Predictify.www.Controller;
 
 
+import com.Predictify.www.Model.UserWallet;
 import com.Predictify.www.Service.WalletService;
-import com.Predictify.www.Model.Wallet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,10 +16,10 @@ public class WalletController {
     WalletService walletService;
 
     @PutMapping("/add-balance/{id}")
-    public ResponseEntity<Wallet> updateBalance(Wallet wallet){
-        System.out.println("@Controller layer = " + wallet);
-        Wallet updatedWallet = walletService.updateBalance(wallet);
-        return ResponseEntity.ok(updatedWallet);
+    public ResponseEntity<UserWallet> updateBalance(UserWallet userWallet){
+        System.out.println("@Controller layer = " + userWallet);
+        UserWallet updatedUserWallet = walletService.updateBalance(userWallet);
+        return ResponseEntity.ok(updatedUserWallet);
     }
 
 }

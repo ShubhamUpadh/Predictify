@@ -1,7 +1,7 @@
 package com.Predictify.www.Service;
 
 import com.Predictify.www.Model.User;
-import com.Predictify.www.Model.Wallet;
+import com.Predictify.www.Model.UserWallet;
 import com.Predictify.www.Repository.UserRepository;
 import com.Predictify.www.Repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +30,8 @@ public class UserService {
     public User addUser(User user) {
         User savedUser = userRepository.save(user);
 
-        Wallet wallet = new Wallet(savedUser.getId(), 0);
-        walletRepository.saveAndFlush(wallet);
+        UserWallet userWallet = new UserWallet(savedUser.getId(), 0);
+        walletRepository.saveAndFlush(userWallet);
         return savedUser;
     }
 
@@ -47,8 +47,8 @@ public class UserService {
         }
 
         for (User savedUser : savedUsers){
-            Wallet wallet = new Wallet(savedUser.getId(), 0);
-            walletRepository.save(wallet);
+            UserWallet userWallet = new UserWallet(savedUser.getId(), 0);
+            walletRepository.save(userWallet);
         }
         return  savedUsers;
     }

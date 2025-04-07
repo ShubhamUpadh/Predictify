@@ -1,14 +1,13 @@
 package com.Predictify.www.Model;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "wallet")
-public class Wallet {
+public class UserWallet {
     @Id
     @Column(name = "user_id")
     Long id;
@@ -18,15 +17,15 @@ public class Wallet {
 //    @Version
 //    Integer version;
 
-    public Wallet(Long id, int balance) {
+    public UserWallet(Long id, int balance) {
         this.id = id;
         this.balance = balance;
     }
 
-    public Wallet() {
+    public UserWallet() {
     }
 
-    public Wallet(int balance) {
+    public UserWallet(int balance) {
         this.balance = balance;
     }
 
@@ -62,8 +61,8 @@ public class Wallet {
     public boolean equals(Object o){
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Wallet wallet1 = (Wallet)o;
-        return Objects.equals(id, wallet1.getId());
+        UserWallet userWallet1 = (UserWallet)o;
+        return Objects.equals(id, userWallet1.getId());
     }
 
     @Override

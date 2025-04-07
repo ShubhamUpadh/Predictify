@@ -3,7 +3,7 @@ package com.Predictify.www.Model;
 import com.Predictify.www.Enum.opinion;
 
 public class UserBetDTO {
-    Long id;
+    Long id; // user ID
     Long poll_id;
     int amount;
     opinion opinion;
