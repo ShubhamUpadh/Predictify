@@ -109,16 +109,16 @@ public class UserBetService {
 
         //6.Return the responseEntity
 
-        return ResponseEntity.status(HttpStatus.ACCEPTED)
+        return ResponseEntity.status(HttpStatus.CREATED)
                 .body(userBetResponseDTO);
     }
 
     public boolean hasSufficientBalance(Long walletId, int betAmount){
         Integer balance = walletRepository.findBalanceByWalletId(walletId);
-        return balance == null || balance >= betAmount;
+        return balance != null || balance >= betAmount;
     }
 
     public boolean isPollActive(Long pollId){
-        return pollRepository.isPollActive(pollId) || (pollRepository.expiryTime(pollId).isBefore(LocalDateTime.now()));
+        return pollRepository.isPollActive(pollId) || (pollRepository.expiryTime(pollId).isAfter(LocalDateTime.now()));
     }
 }
