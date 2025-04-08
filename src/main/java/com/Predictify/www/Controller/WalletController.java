@@ -6,6 +6,7 @@ import com.Predictify.www.Service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,8 +16,8 @@ public class WalletController {
     @Autowired
     WalletService walletService;
 
-    @PutMapping("/add-balance/{id}")
-    public ResponseEntity<UserWallet> updateBalance(UserWallet userWallet){
+    @PutMapping("/add-balance/")
+    public ResponseEntity<UserWallet> updateBalance(@RequestBody UserWallet userWallet){
         System.out.println("@Controller layer = " + userWallet);
         UserWallet updatedUserWallet = walletService.updateBalance(userWallet);
         return ResponseEntity.ok(updatedUserWallet);

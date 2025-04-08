@@ -11,7 +11,7 @@ public class UserBetDTO {
     public UserBetDTO() {
     }
 
-    public UserBetDTO(Long id, Long poll_id, int amount, com.Predictify.www.Enum.opinion opinion) {
+    public UserBetDTO(Long id, Long poll_id, int amount, opinion opinion) {
         this.id = id;
         this.poll_id = poll_id;
         this.amount = amount;
@@ -42,11 +42,17 @@ public class UserBetDTO {
         this.amount = amount;
     }
 
-    public com.Predictify.www.Enum.opinion getOpinion() {
+    public opinion getOpinion() {
         return opinion;
     }
 
-    public void setOpinion(com.Predictify.www.Enum.opinion opinion) {
+    public void setOpinion(opinion opinion) {
         this.opinion = opinion;
+    }
+
+    @Override
+    public String toString() {
+
+        return this.id + " " + this.poll_id + " " + this.amount + " " + this.opinion;
     }
 }

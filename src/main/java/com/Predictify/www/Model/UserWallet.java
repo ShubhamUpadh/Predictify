@@ -12,7 +12,7 @@ public class UserWallet {
     @Column(name = "user_id")
     Long id;
 
-    int balance = 0; // this is in paise
+    int balance; // this is in paise
 
 //    @Version
 //    Integer version;
@@ -48,14 +48,6 @@ public class UserWallet {
     public void setId(Long id) {
         this.id = id;
     }
-
-//    public Integer getVersion() {
-//        return version;
-//    }
-//
-//    public void setVersion(Integer version) {
-//        this.version = version;
-//    }
 
     @Override
     public boolean equals(Object o){

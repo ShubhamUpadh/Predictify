@@ -23,7 +23,7 @@ public class UserTransaction {
     userWalletOperation operation; // Enum: DEPOSIT, WITHDRAW, BET
 
     @Column(nullable = false)
-    private Double amount;
+    private int amount;
 
     @Column(name = "poll_id", nullable = true)
     private Long pollId; // Storing only the ID instead of the full OpinionPoll object
@@ -33,7 +33,7 @@ public class UserTransaction {
     public UserTransaction() {
     }
 
-    public UserTransaction(Long pollId, Double amount, userWalletOperation operation, Long walletId){
+    public UserTransaction(Long pollId, int amount, userWalletOperation operation, Long walletId){
         this.pollId = pollId;
         this.amount = amount;
         this.operation = operation;
@@ -65,11 +65,11 @@ public class UserTransaction {
         this.operation = operation;
     }
 
-    public Double getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 

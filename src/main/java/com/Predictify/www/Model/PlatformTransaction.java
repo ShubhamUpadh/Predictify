@@ -46,7 +46,6 @@ public class PlatformTransaction {
         else return PTType.PRIZE;
     }
 
-    public
     public Long getId() {
         return id;
     }

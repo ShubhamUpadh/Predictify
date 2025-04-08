@@ -1,10 +1,7 @@
 package com.Predictify.www.Model;
 
 import com.Predictify.www.Enum.opinion;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -15,6 +12,7 @@ public class UserOpinion {
     Long id;
     Long userId;
     Long opinionId;
+    @Enumerated(EnumType.STRING)
     opinion opinion;
     boolean transactionSettled;
     LocalDateTime timestamp;

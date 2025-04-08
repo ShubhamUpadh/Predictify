@@ -11,5 +11,5 @@ public interface WalletRepository extends JpaRepository<UserWallet, Long> {
     @Query("SELECT w.balance FROM UserWallet w WHERE w.id = :walletId")
     Integer findBalanceByWalletId(@Param("walletId") Long walletId);
 
-    boolean existsById(Long walletId)
+    boolean existsById(Long walletId);
 }
