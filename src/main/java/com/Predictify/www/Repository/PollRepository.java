@@ -17,4 +17,6 @@ public interface PollRepository extends JpaRepository<OpinionPoll, Long> {
     @Query("SELECT o.expiryTime FROM OpinionPoll o WHERE o.id = :id")
     LocalDateTime expiryTime(@Param("id") Long id);
 
+    @Query("SELECT p FROM OpinionPoll p WHERE p.expiryTime <= :now AND p.expired = false")
+    List<OpinionPoll> findPollsToExpire(@Param("now") LocalDateTime now);
 }
